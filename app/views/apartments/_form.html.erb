@@ -1,0 +1,54 @@
+<%= form_for(@apartment, :html => { :multipart => true }) do |f| %>
+  <% if @apartment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apartment.errors.count, "error") %> prohibited this apartment from being saved:</h2>
+
+      <ul>
+      <% @apartment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :lease_start %><br>
+    <%= f.date_select :lease_start %>
+  </div>
+  <div class="field">
+    <%= f.label :lease_end %><br>
+    <%= f.date_select :lease_end %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+	<%= f.fields_for :photos do |p| %>
+	     <div class="field">
+	       <%= p.label :image %><br>
+	       <%= p.file_field :image, :multiple => true, name: "photos[image][]" %>
+	     </div>
+	   <% end %>
+
+	   <% if params[:controller] == "apartment" && params[:action] == "edit" %> 
+	     <% @apartment.photos.each do |p| %>
+	       <%= image_tag p.image, :size => "150x150" %>
+	     <% end %>
+	   <% end %>
+	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

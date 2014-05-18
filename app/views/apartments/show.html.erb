@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @apartment.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @apartment.address %>
+</p>
+
+<p>
+  <strong>Lease start:</strong>
+  <%= @apartment.lease_start %>
+</p>
+
+<p>
+  <strong>Lease end:</strong>
+  <%= @apartment.lease_end %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @apartment.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @apartment.user_id %>
+</p>
+
+<% @photos.each do |p| %>
+  <%= image_tag p.image_url %>
+  <%= link_to "Destroy", p, method: :delete %>
+<% end %>
+
+<%= link_to 'Edit', edit_apartment_path(@apartment) %> |
+<%= link_to 'Back', apartments_path %>

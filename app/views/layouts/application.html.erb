@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a href="#" class="brand">Renter</a>
+        <ul class="nav">
+          <li><%= link_to "Apartments", apartments_path%></li>
+        </ul>
+        <ul class="nav pull-right">
+          <% if user_signed_in? %>
+              <li> <%= link_to current_user.email, edit_user_registration_path %> </li>
+              <li> <%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
+          <% else %>
+              <li> <%= link_to "Register", new_user_registration_path %> </li>
+              <li> <%= link_to "Log In", new_user_session_path %> </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <% if notice %>
+        <div> <%= notice %></div>
+    <% end %>
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </div>
+  </body>
+</html>
+
