@@ -48,7 +48,7 @@ class ApartmentsController < ApplicationController
     respond_to do |format|
       if @apartment.update(apartment_params)
         params[:photos]['image'].each do |a|
-          @photo = @apartment.photos.creat!(:image => a, :apartment_id => @apartment.id)
+          @photo = @apartment.photos.create!(:image => a, :apartment_id => @apartment.id)
         end
         format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
         format.json { render :show, status: :ok, location: @apartment }

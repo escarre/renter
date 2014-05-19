@@ -6,9 +6,13 @@ gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+# upload images
 gem 'carrierwave'
+
+# create thumbnails
+gem "mini_magick"
 # Use SCSS for stylesheets
-# gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -32,7 +36,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
-gem 'twitter-bootstrap-rails', '~> 2.2.8'
+# gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :development do
   gem "binding_of_caller"
@@ -51,4 +55,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
