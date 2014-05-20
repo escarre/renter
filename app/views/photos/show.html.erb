@@ -1,14 +1,13 @@
-<p id="notice"><%= notice %></p>
-
+<div class="container">
 <p>
   <strong>Apartment:</strong>
   <%= @photo.apartment_id %>
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= @photo.image %>
+  <%= image_tag @photo.image_url %>
 </p>
 
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Edit', edit_photo_path(@photo) %> | <%= link_to "Destroy", p, method: :delete %> |
 <%= link_to 'Back', photos_path %>
+</div>

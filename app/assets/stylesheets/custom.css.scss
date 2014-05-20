@@ -1,23 +1,96 @@
+a{color:#f45429}
+a:hover{color:#c23a1a;text-decoration:none}
+.navbar {
+   background-color: transparent;
+   background: transparent;
+	 border-bottom: 0;
+}
+.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus{background-color:#f45429}
+.navbar-default .navbar-toggle .icon-bar{background-color:#fff}
+.navbar-wrapper{position:relative;z-index:15}
+.container>.navbar-collapse,.logo{margin:0 10px}
+.navbar-default{margin-top:20px}
+.navbar-nav{font-family:'Open Sans',sans-serif;font-weight:600;font-size:1.08em;margin-left:60px}
+.navbar-default .navbar-nav>li{margin-right:5px}
+.navbar-default .navbar-nav>li>a{color:#fff}
+.navbar-default .navbar-right>li>a{color:#fff}
+.navbar-default .navbar-nav>li>a:hover,.navbar-default .navbar-right>li>a:hover{border:2px solid #fff;color:#fff}
+.navbar-fixed-top{position:absolute}
 
+.navbar-right {
+	color: #fff;
+	list-style-type: none;
+}
+
+
+.jumbotron{
+	background-image:url(congruent_pentagon.png);
+	background-attachment:fixed;
+	background-position:center top;
+	background-size:cover;
+	position:relative;
+	width:100%;
+	height:500px}
+.jumbotron .hero{
+	background-attachment:fixed;
+	margin:0 auto; 
+	padding:100px 0 220px;
+	width:100%}
+.jumbotron .container{text-align:center}
+
+.jumbotron h1{font-family:'Roboto Slab',serif;font-size:80px;font-weight:700;color:#fff}
+
+.jumbotron p{font-family:'Open Sans',sans-serif;color:#fff;font-size:25px}
+
+.promote{padding-top:60px;padding-bottom:40px;margin-top:-25px;background-color:#f2f6dd}
 body {
-  background-color: #f2f2f2;
+	padding-top: 0px;
+		background-color: #f2f2f2;
     font-family: "Lato";
     font-weight: 300;
     font-size: 16px;
     color: #555;
-    padding-top: 50px;
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
 }
 
+.jumbotron-nav {
+	background-image:url(congruent_pentagon.png);
+	background-attachment:fixed;
+	background-position:center top;
+	background-size:cover;
+	position:relative;
+	width:100%;
+	height:100px
+}
+
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway";
     font-weight: 300;
     color: #333;
 }
 
+.col-lg-12 p {
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 300;
+	color: #5e5e5e;
+	font-size: 22px;
+	padding: 40px 10px;
+	max-width: 800px;
+	position: relative;
+	left: 150px;
+	text-align: center;
+  line-height: 28px;
+  margin-bottom: 25px;
+}
+
+.col-lg-4 h2 {
+	font-family: 'Roboto Slab',serif;
+	font-weight: 300;
+	font-size:40px;
+	color: #f3492a;
+}
 
 /* Paragraph & Typographic */
 p {
@@ -73,7 +146,6 @@ a:after {
 
 #headerwrap {
 	background-color: #34495e;
-	padding-top: 60px;
 }
 
 #headerwrap h1 {
@@ -125,6 +197,21 @@ a:after {
 	padding-top: 20px;
 }
 
+.marketing .center-p-div {
+	content: "";
+	text-align: center;
+	width: 84px;
+	background-color: #fa9b86;
+	margin: 18px auto;
+	height: 1px;
+	font-size: 1px;
+	display: block;
+}
+
+.marketing .center-p {
+	text-align: center;
+}
+
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
   margin-bottom: 20px;
@@ -169,11 +256,11 @@ a:after {
 }
 
 #footerwrap {
-	background-color: #2f2f2f;
+	background-color: #80d2b5;
 	color: white;
 	padding-top: 40px;
 	padding-bottom: 60px;
-	text-align: left;
+	text-align: center;
 }
 
 #footerwrap h3 {
@@ -201,4 +288,26 @@ a:after {
 ul.apartments li {
     width: 200px;
     display: inline-block;
+}
+
+#form { 
+	max-width: 500px; 
+	margin: auto;}
+
+.page-header h1 {
+	font-family: 'Roboto Slab',serif;
+	font-weight: 300;
+	font-size:40px;
+	color: #f3492a;
+}	
+
+.album {
+	padding-top:25px;
+	padding-bottom:25px;
+	padding-right:50px;
+	padding-left:50px;
+}
+
+.album img{
+	margin: 20px;
 }

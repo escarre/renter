@@ -1,10 +1,11 @@
 class ApartmentsController < ApplicationController
+  
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   # GET /apartments
   # GET /apartments.json
   def index
-    @apartments = Apartment.all
+    @apartments = current_user.apartments.all
   end
 
   # GET /apartments/1
@@ -15,7 +16,7 @@ class ApartmentsController < ApplicationController
 
   # GET /apartments/new
   def new
-    @apartment = Apartment.new
+    @apartment = current_user.apartments.new
     @photo = @apartment.photos.build
   end
 
@@ -26,7 +27,7 @@ class ApartmentsController < ApplicationController
   # POST /apartments
   # POST /apartments.json
   def create
-    @apartment = Apartment.new(apartment_params)
+    @apartment = current_user.apartments.new(apartment_params)
 
     respond_to do |format|
       if @apartment.save

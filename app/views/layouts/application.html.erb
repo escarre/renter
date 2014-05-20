@@ -7,78 +7,57 @@
     <title></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-<body>
-	    <div id="navigation" class="navbar navbar-default navbar-fixed-top">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand" href="#"><b>Renter</b></a>
-	        </div>
-	        <div class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav">
-	            <li class="active"><a href="#home" class="smothscroll">Home</a></li>
-	            <li><a href="#desc" class="smothscroll">About</a></li>
-	            <li><a href="#showcase" class="smothScroll">Showcase</a></li>
-	            <li><a href="#contact" class="smothScroll">Contact</a></li>
-	          </ul>
-		        <ul class="nav pull-right">
-		          <% if user_signed_in? %>
-		              <li> <%= link_to current_user.email, edit_user_registration_path %> </li>
-									<li>	<%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
-		          <% else %>
-		              <li> <%= link_to "Register", new_user_registration_path %></li>
-									<li><%= link_to "Log In", new_user_session_path %> </li> 
-		          <% end %>
-		        </ul>
-	        </div>
-	      </div>
-	    </div> 
-    
+<body> 
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default  navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" href="index.html"><%= image_tag "logo.png" %></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/apartments">Apartments</a></li>
+            <li><a href="/apartments/new">New Apartment</a></li>
+            <li><a href="#.thoughts">About</a></li>
+          </ul>
+	        <ul class="navbar-right">
+	          <% if user_signed_in? %>
+	              <li> <%= link_to current_user.email, edit_user_registration_path %> | <%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
+	          <% else %>
+	              <li> <%= link_to "Register", new_user_registration_path %> | <%= link_to "Log In", new_user_session_path %> </li>
+	          <% end %>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	  <div class="jumbotron-nav">
+	  </div>
+			
+    <div class="container">
 		<% if notice %>
         <div> <%= notice %></div>
     <% end %>
-	
+
 		<%= yield %>
+	</div>
 
-
+	<section id="contact" name="contact"></section>
+	<div id="footerwrap">
+		<div class="container">
+				<%= image_tag "logo.png" %>
+				<p>
+				Created by Escarre<br/>
+				</p>
+		</div>
+	</div>
+	
 </body>
- 
-<!-- </body>
-  <body>
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container">
-        <a href="#" class="brand">Renter</a>
-        <ul class="nav">
-          <li><%= link_to "Apartments", apartments_path%></li>
-        </ul>
-        <ul class="nav pull-right">
-          <% if user_signed_in? %>
-              <li> <%= link_to current_user.email, edit_user_registration_path %> </li>
-              <li> <%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
-          <% else %>
-              <li> <%= link_to "Register", new_user_registration_path %> </li>
-              <li> <%= link_to "Log In", new_user_session_path %> </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <% if notice %>
-        <div> <%= notice %></div>
-    <% end %>
-
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-  </div>
-  </body> -->
 </html>
 

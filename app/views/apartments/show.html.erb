@@ -1,22 +1,18 @@
-<div class="container">
+
 	<div class="page-header">
 		<h1><%= @apartment.name %><small> <%= @apartment.address %></small></h1>
 		<%= link_to 'Edit Apartment Information', edit_apartment_path(@apartment) %> |
 		<%= link_to 'All Apartments', apartments_path %>
 	</div>
-		<p>Lease: <%= @apartment.lease_start %> - <%= @apartment.lease_end %></p>
-		<p> <%= @apartment.description %> </p>
 
-
-	<table>
-	<% @photos.each_slice(4) do |photos| %>
-		<tr>
-			<% photos.each do |p|%>
-	  		<td><%= image_tag p.image_url(:thumb) %></td>
-	  	  <td><%= link_to "Destroy", p, method: :delete %></td>
-				<% end %>
-		</tr>
-	<% end %>
-	</table>
-
-</div>
+	<div class="album">
+		<table>
+		<% @photos.each_slice(4) do |photos| %>
+			<tr>
+				<% photos.each do |p|%>
+		  		<td><%= link_to image_tag(p.image_url(:thumb)), p %></td>
+					<% end %>
+			</tr>
+		<% end %>
+		</table>
+	</div>

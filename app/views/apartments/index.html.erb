@@ -1,6 +1,6 @@
-<div class="container">
+
 	<div class="page-header">
-		<h1>Your Apartments</h1>
+		<h1>all your apartments</h1>
 	</div>
 
 	<div id="container">
@@ -9,7 +9,7 @@
 			<h1> No apartments found. <%= link_to 'Create one now!', new_apartment_path %> </h1>
 		<% else %>
 		    <% @apartments.each do |apartment| %>
-					<li><%= link_to 'Show', apartment %><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+					<li><%= link_to image_tag("apt_icon.png"), apartment %>
 						<h3><%= apartment.name %></h3>
 						<h5> <%= apartment.address %> </h5>
 						<p><%= apartment.description %></p>
@@ -22,5 +22,5 @@
 	</div>
 	<br>
 	<br>
-	<h3><%= link_to 'New Apartment', new_apartment_path %></h3>
-</div>
+
+
