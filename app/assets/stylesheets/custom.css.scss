@@ -1,5 +1,10 @@
 a{color:#f45429}
-a:hover{color:#c23a1a;text-decoration:none}
+a:hover{color:#c23a1a;text-decoration:none;}
+a:hover img { 
+  background: transparent;
+	text-decoration: none; 
+}
+
 .navbar {
    background-color: transparent;
    background: transparent;
@@ -10,7 +15,7 @@ a:hover{color:#c23a1a;text-decoration:none}
 .navbar-wrapper{position:relative;z-index:15}
 .container>.navbar-collapse,.logo{margin:0 10px}
 .navbar-default{margin-top:20px}
-.navbar-nav{font-family:'Open Sans',sans-serif;font-weight:600;font-size:1.08em;margin-left:60px}
+.navbar-nav{font-family:'Open Sans',sans-serif;font-weight:600;font-size:1.3em;margin-left:60px}
 .navbar-default .navbar-nav>li{margin-right:5px}
 .navbar-default .navbar-nav>li>a{color:#fff}
 .navbar-default .navbar-right>li>a{color:#fff}

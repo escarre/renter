@@ -5,7 +5,11 @@ class ApartmentsController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
-    @apartments = current_user.apartments.all
+    if user_signed_in?
+      @apartments = current_user.apartments.all
+    else
+      redirect_to root_path, notice: "Sign in or create an account to view your apartments!"
+    end
   end
 
   # GET /apartments/1
@@ -16,8 +20,12 @@ class ApartmentsController < ApplicationController
 
   # GET /apartments/new
   def new
-    @apartment = current_user.apartments.new
-    @photo = @apartment.photos.build
+    if user_signed_in?
+      @apartment = current_user.apartments.new
+      @photo = @apartment.photos.build
+    else
+      redirect_to root_path, notice: "Sign up or login to create an apartment."
+    end
   end
 
   # GET /apartments/1/edit

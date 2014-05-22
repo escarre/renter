@@ -1,10 +1,18 @@
+	<div class="page-header row">
+		<div class="col-md-8">
+			<h1><%= @apartment.name %><small> <%= @apartment.address %></small></h1>
 
-	<div class="page-header">
-		<h1><%= @apartment.name %><small> <%= @apartment.address %></small></h1>
-		<%= link_to 'Edit Apartment Information', edit_apartment_path(@apartment) %> |
-		<%= link_to 'All Apartments', apartments_path %>
+		</div>
+		<div class="col-md-4">
+			<% if @apartment.code != nil && @apartment.code_match == true %>
+				<button type="button" class="btn btn-default btn-lg" >Confirmed</button>
+			<% elsif @apartment.code != nil && @apartment.code_match != true %>
+				<button type="button" class="btn btn-default btn-lg" >Pending</button>
+			<% else %>
+				<button type="button" class="btn btn-default btn-lg" >Share now</button>
+			<% end %>
+		</div>
 	</div>
-
 	<div class="album">
 		<table>
 		<% @photos.each_slice(4) do |photos| %>
