@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :apartments
+  has_many :verification_codes
 end

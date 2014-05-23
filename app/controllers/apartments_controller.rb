@@ -1,5 +1,5 @@
 class ApartmentsController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:create_code, :edit, :update, :destroy]
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   # GET /apartments
@@ -36,6 +36,7 @@ class ApartmentsController < ApplicationController
   # POST /apartments.json
   def create
     @apartment = current_user.apartments.new(apartment_params)
+    @apartment.code = Apartment.generate_code
 
     respond_to do |format|
       if @apartment.save
@@ -77,7 +78,7 @@ class ApartmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_apartment
