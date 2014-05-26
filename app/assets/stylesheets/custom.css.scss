@@ -48,8 +48,9 @@ a:hover img {
 .jumbotron p{font-family:'Open Sans',sans-serif;color:#fff;font-size:25px}
 
 .promote{padding-top:60px;padding-bottom:40px;margin-top:-25px;background-color:#f2f6dd}
+
 body {
-	padding-top: 0px;
+		padding-top: 0px;
 		background-color: #f2f2f2;
     font-family: "Lato";
     font-weight: 300;
@@ -291,7 +292,7 @@ a:after {
 }
 
 ul.apartments li {
-    width: 200px;
+    width: 300px;
     display: inline-block;
 }
 
@@ -315,4 +316,14 @@ ul.apartments li {
 
 .album img{
 	margin: 20px;
+}
+
+.apartment .btn-default {
+	background: #fa9b86;
+	color: #fff;
+}
+
+.photo {
+	padding-top: 60px;
+	text-align: center;
 }

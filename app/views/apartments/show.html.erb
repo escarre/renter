@@ -1,13 +1,24 @@
 	<div class="page-header row">
-		<div class="col-md-8">
+		<div class="col-md-8 apartment">
 			<h1><%= @apartment.name %><small> <%= @apartment.address %></small></h1>
-
+			<% if @apartment.code_match == true %>
+				<p> Confirmed by LANDLORDNAME at MATCHDATE </p>
+				<button type="button" class="btn btn-default" >Share with landlord...</button>
+			<% else %>
+				<% if @user.id == @apartment.user_id %>
+					<%= link_to 'Share with Landlord' %> |
+					<%= link_to 'Edit Info/Add Photos', edit_apartment_path(@apartment) %> 
+				<% end%>
+			<% end %>
 		</div>
 		<div class="col-md-4">
-			<% if @apartment.code_match == true %>
-				<button type="button" class="btn btn-default btn-lg" >Confirmed</button>
-			<% else %>
-				<button type="button" class="btn btn-default btn-lg" >Share now</button>
+			<% if @apartment.code_match != true %>
+				<div class="input-group">
+			      <input type="text" class="form-control" placeholder="Verification Code">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="button">Submit</button>
+			      </span>
+			   </div>
 			<% end %>
 		</div>
 	</div>
@@ -21,4 +32,5 @@
 			</tr>
 		<% end %>
 		</table>
+		<%= will_paginate @photos %>
 	</div>

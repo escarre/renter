@@ -24,6 +24,9 @@ gem 'therubyracer',  platforms: :ruby
 gem "less-rails"
 
 gem 'simple_form'
+
+gem 'will_paginate', '~> 3.0'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -38,6 +41,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'devise'
+
+gem "jquery-fileupload-rails"
 
 # gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 

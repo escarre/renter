@@ -1,10 +1,11 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-
-  # GET /photos
-  # GET /photos.json
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  
+  # GET /apartments
+  # GET /apartments.json
   def index
-    @photos = Photo.all
+      redirect_to root_path, notice: "Sign in or create an account to view your apartments!"
   end
 
   # GET /photos/1
@@ -64,7 +65,11 @@ class PhotosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
-      @photo = Photo.find(params[:id])
+      if Photo.exists?(:id => params[:id])
+        @photo = Photo.find(params[:id])
+      else
+        redirect_to root_path, notice: "Sorry, that doesn't exist. Try again!"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

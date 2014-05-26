@@ -1,13 +1,8 @@
-<div class="container">
-<p>
-  <strong>Apartment:</strong>
-  <%= @photo.apartment_id %>
-</p>
+<div class= "photo">
+	<p>
+	  <%= image_tag @photo.image_url %>
+	</p>
 
-<p>
-  <%= image_tag @photo.image_url %>
-</p>
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> | <%= link_to "Destroy", p, method: :delete %> |
-<%= link_to 'Back', photos_path %>
+  <%= link_to "Delete Photo", p, method: :delete %> |
+	<%= link_to 'Back to Apartment', apartment_path(@photo.apartment) %>
 </div>

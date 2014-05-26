@@ -1,12 +1,12 @@
 class ApartmentsController < ApplicationController
-  before_action :authenticate_user!, only: [:create_code, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   # GET /apartments
   # GET /apartments.json
   def index
     if user_signed_in?
-      @apartments = current_user.apartments.all
+      @apartments = current_user.apartments.paginate(:page => params[:page], :per_page => 9)
     else
       redirect_to root_path, notice: "Sign in or create an account to view your apartments!"
     end
@@ -15,7 +15,7 @@ class ApartmentsController < ApplicationController
   # GET /apartments/1
   # GET /apartments/1.json
   def show
-    @photos = @apartment.photos.all
+    @photos = @apartment.photos.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /apartments/new
@@ -35,18 +35,25 @@ class ApartmentsController < ApplicationController
   # POST /apartments
   # POST /apartments.json
   def create
+    # associate aparment with user
     @apartment = current_user.apartments.new(apartment_params)
+    # generate verification code
     @apartment.code = Apartment.generate_code
+    # set apartment user_id field to current_user
+    @apartment.user_id = current_user.id if current_user
 
     respond_to do |format|
       if @apartment.save
-        params[:photos]['image'].each do |a|
-          @photo = @apartment.photos.create!(:image => a, :apartment_id => @apartment.id)
+        # upload and save multiple images, if they are there
+        if params[:photos]
+           params[:photos]['image'].each do |a|
+             @photo = @apartment.photos.create!(:image => a, :apartment_id => @apartment.id)
+           end
         end
         format.html { redirect_to @apartment, notice: 'Apartment was successfully created.' }
         format.json { render :show, status: :created, location: @apartment }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'Something went wrong. Please try again!' }
         format.json { render json: @apartment.errors, status: :unprocessable_entity }
       end
     end
@@ -57,8 +64,10 @@ class ApartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @apartment.update(apartment_params)
-        params[:photos]['image'].each do |a|
-          @photo = @apartment.photos.create!(:image => a, :apartment_id => @apartment.id)
+        if params[:photos]
+            params[:photos]['image'].each do |a|
+              @photo = @apartment.photos.create!(:image => a, :apartment_id => @apartment.id)
+            end
         end
         format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
         format.json { render :show, status: :ok, location: @apartment }
@@ -82,7 +91,11 @@ class ApartmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_apartment
-      @apartment = Apartment.find(params[:id])
+      if Apartment.exists?(:id => params[:id])
+        @apartment = Apartment.find(params[:id])
+      else
+        redirect_to root_path, notice: "Sorry, that doesn't exist. Try again!"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

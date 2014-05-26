@@ -31,12 +31,11 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-	<%= f.fields_for :photos do |p| %>
-	     <div class="field">
-	       <%= p.label :image %><br>
-	       <%= p.file_field :image, :multiple => true, name: "photos[image][]" %>
-	     </div>
-	   <% end %>
+	
+  <div class="field">
+		<strong>Add Images Here: </strong>
+    <%= f.file_field :image, :multiple => true, name: "photos[image][]" %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
