@@ -2,23 +2,27 @@
 		<div class="col-md-8 apartment">
 			<h1><%= @apartment.name %><small> <%= @apartment.address %></small></h1>
 			<% if @apartment.code_match == true %>
-				<p> Confirmed by LANDLORDNAME at MATCHDATE </p>
-				<button type="button" class="btn btn-default" >Share with landlord...</button>
+				<p> Confirmed by LANDLORDNAME at <%= @apartment.match_date %> </p>
 			<% else %>
-				<% if @user.id == @apartment.user_id %>
 					<%= link_to 'Share with Landlord' %> |
 					<%= link_to 'Edit Info/Add Photos', edit_apartment_path(@apartment) %> 
-				<% end%>
 			<% end %>
 		</div>
 		<div class="col-md-4">
 			<% if @apartment.code_match != true %>
 				<div class="input-group">
+					<%= form_for @apartment, :remote => true, :url => apartment_confirm_code_path(@apartment), :html => { :method => 'put' }  do |f| %>
+					  <%= f.text_field :code, placeholder: 'Verification Code' %>
+					  <%= f.submit "Submit", :class => "btn btn-default" %>		
+					<% end %>
+					
 			      <input type="text" class="form-control" placeholder="Verification Code">
 			      <span class="input-group-btn">
 			        <button class="btn btn-default" type="button">Submit</button>
-			      </span>
+						</span>						
 			   </div>
+			<% else %>
+					 <p> This apartment has been successfully confirmed! </p>
 			<% end %>
 		</div>
 	</div>
@@ -27,10 +31,12 @@
 		<% @photos.each_slice(4) do |photos| %>
 			<tr>
 				<% photos.each do |p|%>
-		  		<td><%= link_to image_tag(p.image_url(:thumb)), p %></td>
+		  		<td><%= link_to image_tag(p.image_url(:thumb)), apartment_photo_path(@apartment, p) %></td>
 					<% end %>
 			</tr>
 		<% end %>
 		</table>
 		<%= will_paginate @photos %>
 	</div>
+
+

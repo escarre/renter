@@ -11,9 +11,5 @@ class Apartment < ActiveRecord::Base
     o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
  string = (0...16).map { o[rand(o.length)] }.join
   end
-  
-  def paginated_images(page, per_page = 1)
-      photos.paginate(page: page, per_page: per_page)
-  end
-  
+
 end

@@ -78,6 +78,19 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  def confirm_code
+    @apartment = Apartment.find(params[:apartment_id])
+    respond_to do |format| 
+      if params[:code] == @code
+        @apartment.update_attributes(:code_match => true, :match_date => DateTime.now)
+        format.html { redirect_to @apartment, notice: 'Code accepted. Thank you!' }
+      else
+        format.html { redirect_to @apartment, notice: 'Incorrect code. Please try again.' }
+      end
+    end
+  end
+
+
   # DELETE /apartments/1
   # DELETE /apartments/1.json
   def destroy

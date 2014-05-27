@@ -5,7 +5,6 @@ class PhotosController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
-      redirect_to root_path, notice: "Sign in or create an account to view your apartments!"
   end
 
   # GET /photos/1
