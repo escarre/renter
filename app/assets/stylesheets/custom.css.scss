@@ -1,5 +1,7 @@
 a{color:#f45429}
-a:hover{color:#c23a1a;text-decoration:none;}
+a:hover{
+	text-decoration:none;
+	color: #f3492a;}
 a:hover img { 
   background: transparent;
 	text-decoration: none; 
@@ -49,6 +51,11 @@ a:hover img {
 
 .promote{padding-top:60px;padding-bottom:40px;margin-top:-25px;background-color:#f2f6dd}
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
 		padding-top: 0px;
 		background-color: #f2f2f2;
@@ -56,11 +63,12 @@ body {
     font-weight: 300;
     font-size: 16px;
     color: #555;
+		margin-bottom: 60px;
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
 }
-
+	
 .jumbotron-nav {
 	background-image:url(congruent_pentagon.png);
 	background-attachment:fixed;
@@ -267,6 +275,10 @@ a:after {
 	padding-top: 40px;
 	padding-bottom: 60px;
 	text-align: center;
+	height: 200px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
 
 #footerwrap h3 {
@@ -292,8 +304,22 @@ a:after {
 }
 
 ul.apartments li {
-    width: 300px;
+    width: 350px;
     display: inline-block;
+		text-align: center;
+}
+
+ul.apartments p {
+	min-height: 5.0em;
+}
+
+ul.apartments h5 {
+	min-height: 2.0em;
+}
+
+ul.apartments h3 {
+	width:335px; float:left; overflow:hidden; padding-left:5px;
+	white-space: nowrap;
 }
 
 #form { 

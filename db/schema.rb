@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521025507) do
+ActiveRecord::Schema.define(version: 20140529185841) do
 
   create_table "apartments", force: true do |t|
     t.string   "name"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20140521025507) do
     t.string   "code"
     t.boolean  "code_match"
     t.datetime "match_date"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "landlord_email"
+    t.string   "landlord_name"
+    t.string   "confirm_code"
   end
 
   create_table "photos", force: true do |t|
@@ -47,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140521025507) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

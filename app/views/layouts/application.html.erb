@@ -39,24 +39,23 @@
     </div>
 	  <div class="jumbotron-nav">
 	  </div>
-			
-    <div class="container">
-		<% if notice %>
-        <div> <%= notice %></div>
-    <% end %>
+		<div class = "wrap">	
+	    <div class="container">
+				<% if notice %>
+		        <div> <%= notice %></div>
+		    <% end %>
 
-		<%= yield %>
-	</div>
-
-	<section id="contact" name="contact"></section>
-	<div id="footerwrap">
-		<div class="container">
+				<%= yield %>
+			</div>
+		</div>
+		<div id="footerwrap">
+			<div class="container">
 				<%= image_tag "logo.png" %>
 				<p>
 				Created by Escarre<br/>
 				</p>
+			</div>
 		</div>
-	</div>
 	
 </body>
 </html>

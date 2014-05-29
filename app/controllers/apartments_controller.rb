@@ -30,6 +30,10 @@ class ApartmentsController < ApplicationController
 
   # GET /apartments/1/edit
   def edit
+    # only allow editing if apartment has not been verified
+    if @apartment.code_match == true
+      redirect_to apartment_path, notice: "This apartment has already been confirmed. It can no longer be edited."
+    end
   end
 
   # POST /apartments
@@ -78,10 +82,16 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  # logic for landlord to verify photos with his code
   def confirm_code
     @apartment = Apartment.find(params[:apartment_id])
-    respond_to do |format| 
-      if params[:code] == @code
+    @user = current_user
+    respond_to do |format|
+      # if landlord input matches the generated code
+      if params[:confirm_code] == @code
+        # tell the mailer to send confirmation email
+        ApartmentMailer.confirmation_email(@user).deliver
+        # update code_match field to be true and set match_date to now
         @apartment.update_attributes(:code_match => true, :match_date => DateTime.now)
         format.html { redirect_to @apartment, notice: 'Code accepted. Thank you!' }
       else
@@ -90,6 +100,15 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  def share_apartment
+    @apartment = Apartment.find(params[:apartment_id])
+    @user = current_user
+    respond_to do |format|
+      # tell the mailer to send confirmation email
+      ApartmentMailer.verification_email(@user, @apartment).deliver
+      format.html { redirect_to @apartment, notice: 'A verification code has been sent to your landlord. Thank you!' }
+    end
+  end
 
   # DELETE /apartments/1
   # DELETE /apartments/1.json
@@ -113,6 +132,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:name, :address, :lease_start, :lease_end, :description, :user_id)
+      params.require(:apartment).permit(:name, :address, :city, :state, :zip, :confirm_code, :landlord_email, :landlord_name, :lease_start, :lease_end, :description, :user_id)
     end
 end

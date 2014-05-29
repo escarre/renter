@@ -6,16 +6,14 @@
 	<div id="container">
 	<ul class ="apartments">
 		<% if @apartments.size <= 0 %>
-			<h1> No apartments found. <%= link_to 'Create one now!', new_apartment_path %> </h1>
+			<h4> No apartments found. <%= link_to 'Create one now!', new_apartment_path %> </h4>
 		<% else %>
 		    <% @apartments.each do |apartment| %>
 					<li><%= link_to image_tag("apt_icon.png"), apartment %>
 						<h3><%= apartment.name %></h3>
 						<h5> <%= apartment.address %> </h5>
+						<h5><%= apartment.city %>, <%= apartment.state %> <%= apartment.zip %></h5>
 						<p><%= apartment.description %></p>
-		        <td><%= link_to 'Show', apartment %></td>
-		        <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
-		        <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					</li>
 				<% end %>
 		<% end %>

@@ -1,28 +1,24 @@
 	<div class="page-header row">
 		<div class="col-md-8 apartment">
 			<h1><%= @apartment.name %><small> <%= @apartment.address %></small></h1>
-			<% if @apartment.code_match == true %>
-				<p> Confirmed by LANDLORDNAME at <%= @apartment.match_date %> </p>
+			<% if verified? %>
+				<p> Confirmed by <%= @apartment.landlord_name %> on <%= @apartment.match_date.strftime("%m/%d/%Y") %> </p>
 			<% else %>
-					<%= link_to 'Share with Landlord' %> |
-					<%= link_to 'Edit Info/Add Photos', edit_apartment_path(@apartment) %> 
+					<%= link_to 'Share with Landlord', apartment_share_apartment_path(@apartment) %> |
+					<%= link_to 'Edit Info/Add Photos', edit_apartment_path(@apartment) %> |
+					<%= link_to 'Delete Apartment', @apartment, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<% end %>
 		</div>
 		<div class="col-md-4">
-			<% if @apartment.code_match != true %>
-				<div class="input-group">
-					<%= form_for @apartment, :remote => true, :url => apartment_confirm_code_path(@apartment), :html => { :method => 'put' }  do |f| %>
-					  <%= f.text_field :code, placeholder: 'Verification Code' %>
-					  <%= f.submit "Submit", :class => "btn btn-default" %>		
-					<% end %>
-					
-			      <input type="text" class="form-control" placeholder="Verification Code">
-			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button">Submit</button>
-						</span>						
-			   </div>
+			<% if verified? %>
+				<p> This apartment has been successfully confirmed! </p>
 			<% else %>
-					 <p> This apartment has been successfully confirmed! </p>
+				<div class="input-group">
+					<%= form_for @apartment, :url => apartment_confirm_code_path(@apartment), :html => { :method => 'put' }  do |f| %>
+					  <%= f.text_field :confirm_code, placeholder: 'Verification Code' %>
+					  <%= submit_tag "Submit", :class => "btn btn-default" %>
+				</div>		
+					<% end %>
 			<% end %>
 		</div>
 	</div>

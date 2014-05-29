@@ -1,12 +1,12 @@
 Hi from Renter!
 
-Your new tenant, (Elizabeth Carretto), would like to share some photos of the property at (apt address) with you. The purpose of these photos is to document and mutually acknowledge the condition of the premises upon the start of (Elizabeth Carretto)'s lease term. 
+Your new tenant, <%= @user.first_name%> <%= @user.last_name%>, would like to share some photos of the property at <%= @apartment.address %> <%= @apartment.city %>, <%= @apartment.state %> <%= @apartment.zip %> with you. The purpose of these photos is to document and mutually acknowledge the condition of the premises upon the start of <%= @user.first_name %> <%= @user.last_name %>'s lease term. 
 
-Please view the photos of the apartment here: (url to apartment page)
+Please view the photos of the apartment here: <%= @url %>
 
-To confirm your receipt of these images and acknowledge the condition of the premises at (address) on this date, please enter this code in the Landlord confirmation field at the top right of the page.
+To confirm your receipt of these images and acknowledge the condition of the premises at <%= @apartment.address %> on this date, please enter this code in the Landlord confirmation field at the top right of the page.
 
-(code)
+<%= @apartment.code %>
 
 For more information about Renter, please visit (url to how renter works).
 
@@ -14,11 +14,4 @@ Thank you for your cooperation!
 
 Renter
 
-fields: 
-	user
-		tenant first name, tenant last name
-		Landlord name (one field, company name or full name)
-	apartment
-		apartment path
-		apartment address
-		apartment code
+		
