@@ -1,27 +1,17 @@
-<h1>Listing photos</h1>
+	<div class="row">
+		<div class="page-header col-md-8">
+			<h1>all photos, full size</h1>
+		</div>
+		<div class="right-side col-md-4">
+			<%= link_to 'Add More Photos or Edit Apartment', edit_apartment_path(@apartment) %>
+			<%= will_paginate @photos %>
+		</div>
+	</div>
+<div class="img-display">
+	    <% @photos.each do |photo| %>
+				<div class="photo">
+					<%= link_to image_tag(photo.image_url), apartment_photo_path(@apartment, photo) %>
+				</div>
+	    <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Apartment</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @photos.each do |photo| %>
-      <tr>
-        <td><%= photo.apartment_id %></td>
-        <td><%= photo.image %></td>
-        <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Photo', new_photo_path %>

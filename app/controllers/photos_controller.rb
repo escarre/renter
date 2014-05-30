@@ -5,6 +5,8 @@ class PhotosController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
+    @apartment = Apartment.find(params[:apartment_id])
+    @photos = @apartment.photos.paginate(:page => params[:page], :per_page => 8)
   end
 
   # GET /photos/1
@@ -54,9 +56,10 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
+    @apartment = Apartment.find(params[:apartment_id])
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to apartment_url(@apartment), notice: 'Photo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,3 +1,22 @@
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+		padding-top: 0px;
+		background-color: #f2f2f2;
+    font-family: "Lato";
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+		margin-bottom: 250px;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
 a{color:#f45429}
 a:hover{
 	text-decoration:none;
@@ -15,12 +34,24 @@ a:hover img {
 .navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus{background-color:#f45429}
 .navbar-default .navbar-toggle .icon-bar{background-color:#fff}
 .navbar-wrapper{position:relative;z-index:15}
-.container>.navbar-collapse,.logo{margin:0 10px}
-.navbar-default{margin-top:20px}
-.navbar-nav{font-family:'Open Sans',sans-serif;font-weight:600;font-size:1.3em;margin-left:60px}
+.container>.logo{margin:0 10px}
+.navbar-default{margin-top:5px}
+.navbar-collapse, .navbar-right {
+	margin-top: 10px;
+}
+
+.navbar-right {
+	font-size: 1.1em;
+}
+.navbar-nav {
+	font-family:'Open Sans',sans-serif;
+	font-weight:600;
+	font-size:1.4em;
+	margin-left:60px; }
+	
 .navbar-default .navbar-nav>li{margin-right:5px}
 .navbar-default .navbar-nav>li>a{color:#fff}
-.navbar-default .navbar-right>li>a{color:#fff}
+.navbar-default .navbar-right>li>a{color:#fff; font-size: 1em;}
 .navbar-default .navbar-nav>li>a:hover,.navbar-default .navbar-right>li>a:hover{border:2px solid #fff;color:#fff}
 .navbar-fixed-top{position:absolute}
 
@@ -51,23 +82,6 @@ a:hover img {
 
 .promote{padding-top:60px;padding-bottom:40px;margin-top:-25px;background-color:#f2f6dd}
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-		padding-top: 0px;
-		background-color: #f2f2f2;
-    font-family: "Lato";
-    font-weight: 300;
-    font-size: 16px;
-    color: #555;
-		margin-bottom: 60px;
-
-    -webkit-font-smoothing: antialiased;
-    -webkit-overflow-scrolling: touch;
-}
 	
 .jumbotron-nav {
 	background-image:url(congruent_pentagon.png);
@@ -80,10 +94,17 @@ body {
 }
 
 /* Titles */
-h1, h2, h3, h4, h5, h6 {
+h1, h3, h4, h5, h6 {
     font-weight: 300;
     color: #333;
 }
+
+h2 {
+	font-family: 'Roboto Slab',serif;
+	font-weight: 300;
+	font-size:40px;
+	color: #f3492a;
+}	
 
 .col-lg-12 p {
 	font-family: 'Open Sans',sans-serif;
@@ -201,6 +222,18 @@ a:after {
 	font-size: 20px;
 }
 
+.index-btn {
+	margin-top: 40px;
+}
+
+.form-btn {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.form-field {
+	margin-bottom: 10px;
+}
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
@@ -211,7 +244,7 @@ a:after {
 	padding-top: 20px;
 }
 
-.marketing .center-p-div {
+.center-p-div {
 	content: "";
 	text-align: center;
 	width: 84px;
@@ -318,7 +351,10 @@ ul.apartments h5 {
 }
 
 ul.apartments h3 {
-	width:335px; float:left; overflow:hidden; padding-left:5px;
+	width:335px; 
+	float:left; 
+	overflow:hidden; 
+	padding-left:5px;
 	white-space: nowrap;
 }
 
@@ -352,4 +388,27 @@ ul.apartments h3 {
 .photo {
 	padding-top: 60px;
 	text-align: center;
+}
+
+.img-display {
+	text-align: center;
+}
+
+.right-side {
+	padding-top: 30px;
+	text-align: right;
+}
+
+/* About page
+------------------------- */
+.about {
+	text-align: center;
+}
+.about p{
+	text-align: justify;
+}
+
+.inline {
+	display: inline-block;
+	margin-top: 5px;
 }

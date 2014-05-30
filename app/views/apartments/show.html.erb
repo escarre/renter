@@ -8,8 +8,9 @@
 					<%= link_to 'Edit Info/Add Photos', edit_apartment_path(@apartment) %> |
 					<%= link_to 'Delete Apartment', @apartment, method: :delete, data: { confirm: 'Are you sure?' } %>
 			<% end %>
+			<%= link_to 'View All Photos, Full Size', apartment_photos_path(@apartment) %>	
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 right-side">
 			<% if verified? %>
 				<p> This apartment has been successfully confirmed! </p>
 			<% else %>
@@ -17,8 +18,8 @@
 					<%= form_for @apartment, :url => apartment_confirm_code_path(@apartment), :html => { :method => 'put' }  do |f| %>
 					  <%= f.text_field :confirm_code, placeholder: 'Verification Code' %>
 					  <%= submit_tag "Submit", :class => "btn btn-default" %>
-				</div>		
-					<% end %>
+				</div>
+					<% end %>		
 			<% end %>
 		</div>
 	</div>
