@@ -3,8 +3,10 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+
+# use postgres
+gem 'pg'
 
 # upload images
 gem 'carrierwave'
@@ -24,6 +26,8 @@ gem 'therubyracer',  platforms: :ruby
 gem "less-rails"
 
 gem 'simple_form'
+
+gem 'rails_12factor', group: :production
 
 #pagination
 gem 'will_paginate', '~> 3.0'
