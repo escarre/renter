@@ -25,7 +25,11 @@ gem "less-rails"
 
 gem 'simple_form'
 
+#pagination
 gem 'will_paginate', '~> 3.0'
+
+#create better urls
+gem 'friendly_id', '~> 5.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -40,9 +44,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# user authentication with devise
 gem 'devise'
-
-gem "jquery-fileupload-rails"
 
 # gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 

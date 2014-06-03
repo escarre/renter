@@ -3,6 +3,6 @@
 	  <%= image_tag @photo.image_url %>
 	</p>
 
-  <%= link_to "Delete Photo", p, method: :delete %> |
+  <%= link_to "Delete Photo", p, method: :delete unless apt_verified? %> 
 	<%= link_to 'Back to Apartment', apartment_path(@photo.apartment) %>
 </div>

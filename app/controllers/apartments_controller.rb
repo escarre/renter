@@ -84,7 +84,7 @@ class ApartmentsController < ApplicationController
 
   # logic for landlord to verify photos with his code
   def confirm_code
-    @apartment = Apartment.find(params[:apartment_id])
+    @apartment = Apartment.friendly.find(params[:apartment_id])
     @user = current_user
     respond_to do |format|
       # if landlord input matches the generated code
@@ -101,7 +101,7 @@ class ApartmentsController < ApplicationController
   end
 
   def share_apartment
-    @apartment = Apartment.find(params[:apartment_id])
+    @apartment = Apartment.friendly.find(params[:apartment_id])
     @user = current_user
     respond_to do |format|
       # tell the mailer to send confirmation email
@@ -123,8 +123,8 @@ class ApartmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_apartment
-      if Apartment.exists?(:id => params[:id])
-        @apartment = Apartment.find(params[:id])
+      if Apartment.friendly.find(params[:id])
+        @apartment = Apartment.friendly.find(params[:id])
       else
         redirect_to root_path, notice: "Sorry, that doesn't exist. Try again!"
       end

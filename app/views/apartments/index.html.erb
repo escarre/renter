@@ -8,14 +8,20 @@
 		<% if @apartments.size <= 0 %>
 			<h4> No apartments found. <%= link_to 'Create one now!', new_apartment_path %> </h4>
 		<% else %>
-		    <% @apartments.each do |apartment| %>
-					<li><%= link_to image_tag("apt_icon.png"), apartment %>
-						<h3><%= apartment.name %></h3>
-						<h5> <%= apartment.address %> </h5>
-						<h5><%= apartment.city %>, <%= apartment.state %> <%= apartment.zip %></h5>
-						<p><%= apartment.description %></p>
-					</li>
-				<% end %>
+			<% @apartments.each_slice(3) do |apartments|%>
+				<div class="row">
+			    <% apartments.each do |apartment| %>
+						<div class="col-md-4">
+							<li><%= link_to image_tag("apt_icon.png"), apartment %> 
+								<h3><%= apartment.name %></h3>
+								<h5> <%= apartment.address %> </h5>
+								<h5><%= apartment.city %>, <%= apartment.state %> <%= apartment.zip %></h5>
+								<p><%= apartment.description %></p>
+							</li>
+						</div>
+					<% end %>
+				</div>
+		  <% end %>
 		<% end %>
 		<%= will_paginate @apartments %>
 	</div>
