@@ -6,7 +6,7 @@
 			<% else %>
 					<%= link_to 'Share with Landlord', apartment_share_apartment_path(@apartment) %> |
 					<%= link_to 'Edit Info/Add Photos', edit_apartment_path(@apartment) %> |
-					<%= link_to 'Delete Apartment', @apartment, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<%= link_to 'Delete Apartment', @apartment, method: :delete, data: { confirm: 'Are you sure?' } %> |
 			<% end %>
 			<%= link_to 'View All Photos, Full Size', apartment_photos_path(@apartment) %>	
 		</div>
