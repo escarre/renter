@@ -90,7 +90,7 @@ class ApartmentsController < ApplicationController
       # if landlord input matches the generated code
       if params[:confirm_code] == @code
         # tell the mailer to send confirmation email
-        ApartmentMailer.confirmation_email(@user).deliver
+        ApartmentMailer.confirmation_email(@user, @apartment).deliver
         # update code_match field to be true and set match_date to now
         @apartment.update_attributes(:code_match => true, :match_date => DateTime.now)
         format.html { redirect_to @apartment, notice: 'Code accepted. Thank you!' }

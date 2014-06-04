@@ -8,8 +8,9 @@ class ApartmentMailer < ActionMailer::Base
       mail(to: @apartment.landlord_email, subject: 'Apartment Documentation Request')
   end
   
-  def confirmation_email(user)
+  def confirmation_email(user, apartment)
+    @apartment = apartment
     @user = user
-    mail(to: @user.email, subject: 'Apartment is confirmed!')
+    mail(to: [@user.email, @apartment.landlord_email], subject: 'Apartment is confirmed!')
   end
 end
