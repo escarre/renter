@@ -41,9 +41,19 @@
 	  </div>
 		<div class = "wrap">	
 	    <div class="container">
-				<% if notice %>
-		        <div> <%= notice %></div>
-		    <% end %>
+			  <% if notice %>
+			       <div class="temp alert alert-info alert-dismissable">
+			         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			         <%= notice %>
+			       </div>
+			     <% end %>
+
+			     <% if alert %>
+			       <div class="temp alert alert-warning alert-dismissable">
+			         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			         <%= alert %>
+			       </div>
+			     <% end %>
 
 				<%= yield %>
 			</div>
