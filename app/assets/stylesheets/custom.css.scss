@@ -452,3 +452,10 @@ ul.apartments h3 {
 .apt_listing {
 	vertical-align:text-top;
 }
+
+/* Media stuff ----------*/
+@media only screen and (max-width: 766px) {
+.collapsing, .in {background-color: #fff;}
+.collapsing ul li a, .in ul li a {color: #fa9b86!important;}
+.collapsing ul li a:hover, .in ul li a:hover {color: #f3492a!important;}
+}
